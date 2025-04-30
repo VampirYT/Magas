@@ -127,7 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="catalog.cpp" />
+    <ClCompile Include="languages.cpp" />
     <ClCompile Include="Magas.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="stab.cpp" />
+    <ClCompile Include="tab.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
