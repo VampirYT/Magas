@@ -99,6 +99,21 @@ void Catalog(string& Language, string& name, magas& M, bool& first, order& O)
 						cout << "Enter the quantity of the product: ";
 					}
 					cin >> count;
+					if (count > M.productsC.at(index))
+					{
+						if (Language == "ua")
+						{
+							cout << "Не можна купити товар ніж є на складі" << endl;
+							Sleep(3000);
+							Catalog(Language, name, M, first,O);
+						}
+						else if (Language == "en")
+						{
+							cout << "You cannot buy a product that is not in stock" << endl;
+							Sleep(3000);
+							Catalog(Language, name, M, first,O);
+						}
+					}
 					M.productsC.at(index) -= count;
 					O.productsN.push_back(M.productsN.at(index));
 					O.productsC.push_back(count);
@@ -144,7 +159,7 @@ void Catalog(string& Language, string& name, magas& M, bool& first, order& O)
 						{
 							Order << O.productsN.at(i) << " = " << O.productsC.at(i) << "шт" << " по " << O.productsP.at(i) << " гривень сума = " << (O.productsC.at(i) * O.productsP.at(i)) << " гривень" << endl;
 						}
-						Order << "---------------------" << endl;
+						Order << "---------------------------------------------------------------" << endl;
 						if (Language == "ua")
 						{
 							Order << "Загальна вартість - " << O.sum << " гривень" << endl;
