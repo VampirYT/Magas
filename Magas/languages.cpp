@@ -4,7 +4,7 @@ void language(string& Language, string& name, magas& M, bool& first, order& O)
 {
 	system("cls");
 	Tab(10, 47);
-	cout << "Choose a language ¬ибер≥ть мову" << endl;
+	cout << "Choose language ¬ибер≥ть мову" << endl;
 	Tab(1, 47);
 	cout << "Press \"1\" to UA";
 	Tab(1, 47);

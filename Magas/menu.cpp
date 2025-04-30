@@ -13,7 +13,11 @@ void Menu(string& Language, string& name, magas& M, bool& first, order& O)
 	}
 	else if (Language == "en")
 	{
-
+		cout << "Welcome  " << name << endl;
+		cout << "Choose an option:" << endl;
+		cout << "1.Catalog" << endl;
+		cout << "2.Choose language" << endl;
+		cout << "3.Exit" << endl;
 	}
 	while (true)
 	{

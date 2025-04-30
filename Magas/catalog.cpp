@@ -46,15 +46,30 @@ void Catalog(string& Language, string& name, magas& M, bool& first, order& O)
 	{
 		for (int i = 0; i < M.productsN.size(); i++)
 		{
-			cout << i + 1 << ".Товар - " << M.productsN.at(i) << endl;
-			cout << "Кількість - " << M.productsC.at(i) << endl;
-			cout << "Ціна - " << M.productsP.at(i) << endl;
-			cout << "Наявність - ";
-			if (M.productsA.at(i))
-				cout << "Так" << endl;
-			else
-				cout << " Hi" << endl;
-			cout << "---------------------" << endl;
+			if (Language == "ua")
+			{
+				cout << i + 1 << ".Товар - " << M.productsN.at(i) << endl;
+				cout << "Кількість - " << M.productsC.at(i) << endl;
+				cout << "Ціна - " << M.productsP.at(i) << endl;
+				cout << "Наявність - ";
+				if (M.productsA.at(i))
+					cout << "Так" << endl;
+				else
+					cout << " Hi" << endl;
+				cout << "---------------------" << endl;
+			}
+			else if (Language == "en")
+			{
+				cout << i + 1 << ".Product - " << M.productsN.at(i) << endl;
+				cout << "Amount of - " << M.productsC.at(i) << endl;
+				cout << "Price - " << M.productsP.at(i) << endl;
+				cout << "Availability - ";
+				if (M.productsA.at(i))
+					cout << "Yes" << endl;
+				else
+					cout << " No" << endl;
+				cout << "---------------------" << endl;
+			}
 		}
 	}
 	while (true)
@@ -75,16 +90,32 @@ void Catalog(string& Language, string& name, magas& M, bool& first, order& O)
 				if (M.productsA.at(index) == true)
 				{
 					cout << M.productsN.at(index) << endl;
-					cout << "Введіть кількість товару: ";
+					if (Language == "ua")
+					{
+						cout << "Введіть кількість товару: ";
+					}
+					else if (Language == "en")
+					{
+						cout << "Enter the quantity of the product: ";
+					}
 					cin >> count;
 					M.productsC.at(index) -= count;
 					O.productsN.push_back(M.productsN.at(index));
 					O.productsC.push_back(count);
 					O.productsP.push_back(M.productsP.at(index));
 					O.sum += (M.productsP.at(index) * count);
-					cout << "Ви замовили " << count << " " << M.productsN.at(index) << endl;
-					cout << "На " << (M.productsP.at(index) * count) << " гривень по " << M.productsP.at(index) << " за одну штуку" << endl;
-					cout << "Загальна сума " << O.sum << " гривень" << endl;
+					if (Language == "ua")
+					{
+						cout << "Ви замовили " << count << " " << M.productsN.at(index) << endl;
+						cout << "На " << (M.productsP.at(index) * count) << " гривень по " << M.productsP.at(index) << " за одну штуку" << endl;
+						cout << "Загальна вартість " << O.sum << " гривень" << endl;
+					}
+					else if (Language == "en")
+					{
+						cout << "You ordered " << count << " " << M.productsN.at(index) << endl;
+						cout << "For " << (M.productsP.at(index) * count) << " hryvnias each " << M.productsP.at(index) << " per one piece" << endl;
+						cout << "Total price " << O.sum << " hryvnias" << endl;
+					}
 					Sleep(4000);
 					ofstream List("list.txt");
 					if (List.is_open())
@@ -101,18 +132,39 @@ void Catalog(string& Language, string& name, magas& M, bool& first, order& O)
 					}
 					else
 					{
-						Order << "Замовлення " << name << endl;
+						if (Language == "ua")
+						{
+							Order << "Замовлення " << name << endl;
+						}
+						else if (Language == "en")
+						{
+							Order << "Order " << name << endl;
+						}
 						for (int i = 0; i < O.productsC.size(); i++)
 						{
 							Order << O.productsN.at(i) << " = " << O.productsC.at(i) << "шт" << " по " << O.productsP.at(i) << " гривень сума = " << (O.productsC.at(i) * O.productsP.at(i)) << " гривень" << endl;
 						}
 						Order << "---------------------" << endl;
-						Order << "Загальна сума - " << O.sum << " гривень" << endl;
+						if (Language == "ua")
+						{
+							Order << "Загальна вартість - " << O.sum << " гривень" << endl;
+						}
+						else if (Language == "en")
+						{
+							Order << "Total price - " << O.sum << " hryvnias" << endl;
+						}
 					}
 				}
 				else if (M.productsA.at(index) == false)
 				{
-					cout << M.productsN.at(index) << " немає в наявності";
+					if (Language == "ua")
+					{
+						cout << M.productsN.at(index) << " немає в наявності";
+					}
+					else if (Language == "en")
+					{
+						cout << M.productsN.at(index) << " not in availability";
+					}
 					Sleep(2000);
 				}
 				Catalog(Language, name, M, first, O);
