@@ -1,0 +1,4 @@
+tea=19=20
+Poncik=14=14
+Keksik=15=42
+Sugar=0=52
